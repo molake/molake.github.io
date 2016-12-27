@@ -15,6 +15,7 @@ Education:
 Nanjing university of technology bachelor of computer science and technology.
 
 # Selected Projects and Roles
+
 ## Project  LMS
 This is a education program for Japanese students. The purpose of this App is to let students learn better.
 This project is using IOS native development
