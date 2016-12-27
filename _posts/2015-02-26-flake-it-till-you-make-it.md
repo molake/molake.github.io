@@ -1,14 +1,154 @@
 ---
 layout: post
-title: Flake it till you make it
-subtitle: Excerpt from Soulshaping by Jeff Brown
+title: UIImage裁剪
+subtitle: molake
 bigimg: /img/path.jpg
 ---
 
-Under what circumstances should we step off a path? When is it essential that we finish what we start? If I bought a bag of peanuts and had an allergic reaction, no one would fault me if I threw it out. If I ended a relationship with a woman who hit me, no one would say that I had a commitment problem. But if I walk away from a seemingly secure route because my soul has other ideas, I am a flake?  
+```
+//molakeFramework
+//Created by molake on 16/1/13.
+//Copyright © 2016年molake. All rights reserved.
 
-The truth is that no one else can definitively know the path we are here to walk. It’s tempting to listen—many of us long for the omnipotent other—but unless they are genuine psychic intuitives, they can’t know. All others can know is their own truth, and if they’ve actually done the work to excavate it, they will have the good sense to know that they cannot genuinely know anyone else’s. Only soul knows the path it is here to walk. Since you are the only one living in your temple, only you can know its scriptures and interpretive structure.  
+#import"UIImage+UIImageExtras.h"
 
-At the heart of the struggle are two very different ideas of success—survival-driven and soul-driven. For survivalists, success is security, pragmatism, power over others. Success is the absence of material suffering, the nourishing of the soul be damned. It is an odd and ironic thing that most of the material power in our world often resides in the hands of younger souls. Still working in the egoic and material realms, they love the sensations of power and focus most of their energy on accumulation. Older souls tend not to be as materially driven. They have already played the worldly game in previous lives and they search for more subtle shades of meaning in this one—authentication rather than accumulation. They are often ignored by the culture at large, although they really are the truest warriors.  
+@implementationUIImage (UIImageExtras)
 
-A soulful notion of success rests on the actualization of our innate image. Success is simply the completion of a soul step, however unsightly it may be. We have finished what we started when the lesson is learned. What a fear-based culture calls a wonderful opportunity may be fruitless and misguided for the soul. Staying in a passionless relationship may satisfy our need for comfort, but it may stifle the soul. Becoming a famous lawyer is only worthwhile if the soul demands it. It is an essential failure if you are called to be a monastic this time around. If you need to explore and abandon ten careers in order to stretch your soul toward its innate image, then so be it. Flake it till you make it.
+- (UIImage *)imageByScalingToSize:(CGSize)targetSize
+
+{
+
+UIImage *sourceImage =self;
+
+UIImage *newImage =nil;
+
+CGSize imageSize = sourceImage.size;
+
+CGFloat width = imageSize.width;
+
+CGFloat height = imageSize.height;
+
+CGFloat targetWidth = targetSize.width;
+
+CGFloat targetHeight = targetSize.height;
+
+CGFloat scaleFactor =0.0;
+
+CGFloat scaledWidth = targetWidth;
+
+CGFloat scaledHeight = targetHeight;
+
+CGPoint thumbnailPoint = CGPointMake(0.0,0.0);
+
+if(CGSizeEqualToSize(imageSize, targetSize) ==NO) {
+
+CGFloat widthFactor = targetWidth / width;
+
+CGFloat heightFactor = targetHeight / height;
+
+if(widthFactor < heightFactor)
+
+scaleFactor = widthFactor;
+
+else
+
+scaleFactor = heightFactor;
+
+scaledWidth= width * scaleFactor;
+
+scaledHeight = height * scaleFactor;
+
+// center the image
+
+if(widthFactor < heightFactor) {
+
+thumbnailPoint.y = (targetHeight - scaledHeight) *0.5;
+
+}elseif(widthFactor > heightFactor) {
+
+thumbnailPoint.x = (targetWidth - scaledWidth) *0.5;
+
+}
+
+}
+
+// this is actually the interesting part:
+
+UIGraphicsBeginImageContext(targetSize);
+
+CGRect thumbnailRect = CGRectZero;
+
+thumbnailRect.origin = thumbnailPoint;
+
+thumbnailRect.size.width= scaledWidth;
+
+thumbnailRect.size.height = scaledHeight;
+
+[sourceImage drawInRect:thumbnailRect];
+
+newImage =UIGraphicsGetImageFromCurrentImageContext();
+
+UIGraphicsEndImageContext();
+
+if(newImage ==nil)
+
+NSLog(@"could not scale image");
+
+returnnewImage ;
+
+}
+
++ (UIImage *)clipFromView: (UIView *) theView
+
+{
+
+UIGraphicsBeginImageContext(theView.frame.size);
+
+CGContextRef context = UIGraphicsGetCurrentContext();
+
+[theView.layer renderInContext:context];
+
+UIImage *theImage = UIGraphicsGetImageFromCurrentImageContext();
+
+UIGraphicsEndImageContext();
+
+returntheImage;
+
+}
+
++(UIImage *)clipFromView:(UIView *)theView andFrame:(CGRect)rect
+
+{
+
+UIGraphicsBeginImageContext(theView.frame.size);
+
+CGContextRef context = UIGraphicsGetCurrentContext();
+
+CGContextSaveGState(context);
+
+UIRectClip(rect);
+
+UIImage *theImage = UIGraphicsGetImageFromCurrentImageContext();
+
+//[theView.layer renderInContext:context];
+
+UIGraphicsEndImageContext();
+
+returntheImage;
+
+}
+
++ (UIImage *)imageFromImage:(UIImage *)image inRect:(CGRect)rect {
+
+CGImageRef sourceImageRef = [image CGImage];
+
+CGImageRef newImageRef = CGImageCreateWithImageInRect(sourceImageRef, rect);
+
+UIImage *newImage = [UIImage imageWithCGImage:newImageRef];
+
+returnnewImage;
+
+}
+
+@end
+```
