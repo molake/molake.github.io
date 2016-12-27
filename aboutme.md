@@ -28,3 +28,11 @@ I am responsible for all the UI and network data processing in the project.
 ## Project  Today’s Fast Rob
 This is a shopping class project lasted for eight months.Data from their own goods.
 I’m in the project from the framework construction,interface,data commuication,product store to apple’s AppStroe and so on all have involved.
+
+## Project Ford Lincoln app
+This app can remote control vehicle, and can view real-time vehicle status and so on.
+The remote control and vehicle status module, at the time of multicomputer communication code refactoring.
+Optimize the screen adaptation of the code.
+The entire app certificate signing, release, etc.
+Data encryption.
+I on the project is mainly responsible for new function development, and solve the existing some bugs.
