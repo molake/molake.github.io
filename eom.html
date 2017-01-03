@@ -1,0 +1,38 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <title></title>
+  <meta name="Generator" content="Cocoa HTML Writer">
+  <meta name="CocoaVersion" content="1404.47">
+  <style type="text/css">
+    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; line-height: 17.0px; font: 14.0px Tahoma; color: #000000; -webkit-text-stroke: #000000}
+    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; line-height: 17.0px; font: 14.0px Tahoma; color: #000000; -webkit-text-stroke: #000000; background-color: #ddedfb}
+    span.s1 {font-kerning: none; background-color: #ddedfb}
+    span.s2 {font: 14.0px 'PingFang SC'; font-kerning: none; background-color: #ddedfb}
+    span.s3 {font-kerning: none}
+  </style>
+</head>
+<body>
+<p class="p1"><span class="s1">&lt;html &gt;</span></p>
+<p class="p1"><span class="s1">&lt;head&gt;</span></p>
+<p class="p1"><span class="s1">&lt;meta http-equiv="Content-Type" content="text/html; charset=utf-8" /&gt;</span></p>
+<p class="p1"><span class="s1">&lt;title&gt;javascript</span><span class="s2">模拟鼠标自动点击链接</span><span class="s1">&lt;/title&gt;</span></p>
+<p class="p1"><span class="s1">&lt;script type="text/javascript"&gt;</span></p>
+<p class="p1"><span class="s1">var mytime = 0</span><span class="s2">.1</span><span class="s1">;<span class="Apple-converted-space"> </span></span></p>
+<p class="p1"><span class="s1">function myclick()</span></p>
+<p class="p1"><span class="s1">{</span></p>
+<p class="p1"><span class="s1">window.location.reload();<span class="Apple-converted-space"> </span></span></p>
+<p class="p1"><span class="s1">}</span></p>
+<p class="p1"><span class="s1">function autoclick(){</span></p>
+<p class="p1"><span class="s1">setTimeout("myclick()",mytime);</span></p>
+<p class="p1"><span class="s1">}</span></p>
+<p class="p1"><span class="s1">&lt;/script&gt;</span></p>
+<p class="p1"><span class="s1">&lt;/head&gt;</span></p>
+<p class="p1"><span class="s1">&lt;body onload="autoclick()"&gt;</span></p>
+<p class="p1"><span class="s1">&lt;a href="itms-services://?action=download-manifest&amp;url=https://example.com/manifest.plist" id="auto" target="_blank"&gt;</span><span class="s2">你也可以手动点击</span><span class="s1">&lt;/a&gt;</span></p>
+<p class="p1"><span class="s1">&lt;/body&gt;</span></p>
+<p class="p2"><span class="s3">&lt;/html&gt;</span></p>
+</body>
+</html>
