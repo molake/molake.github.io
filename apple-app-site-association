@@ -1,0 +1,22 @@
+{
+  "appclips": {
+    "apps": ["95KVS86UR6.com.jonhos.www.jonhos-clip"]
+  },
+  "webcredentials": {
+    "apps": ["95KVS86UR6.com.jonhos.www.jonhos-clip"]
+  },
+  "applinks": {
+    "apps": [],
+    "details": [
+      {
+        "appID": "95KVS86UR6.com.jonhos.www",
+        "paths": ["/clip", "/clip/*", "/product/*", "/order/*"]
+      },
+      {
+        "appID": "95KVS86UR6.com.jonhos.www.jonhos-clip",
+        "paths": ["/clip", "/clip/*"]
+      }
+    ]
+  }
+}
+
